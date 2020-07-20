@@ -5,11 +5,17 @@ module.exports = {
         "es2020": true
     },
     "extends": [
+        "eslint:recommended",
+        "airbnb",
+        "airbnb-typescript",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
-        "airbnb"
+        "plugin:jsx-a11y/recommended",
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
+        "project": "./tsconfig.json",
         "ecmaFeatures": {
             "jsx": true
         },
@@ -17,12 +23,11 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:react/recommended",
-        "plugin:jsx-a11y/recommended",
+        "react",
+        "@typescript-eslint",
+        "react-hooks"
     ],
     "rules": {
+        "react/react-in-jsx-scope": "off",
     }
 };
