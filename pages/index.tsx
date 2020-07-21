@@ -43,8 +43,8 @@ export default function Home() {
       </Head>
 
       <main>
-        <button type="button" onClick={handleRecord}>Record</button>
-        <button type="button" onClick={handleStop}>Stop</button>
+        <button type="button" onClick={typeof window && handleRecord}>Record</button>
+        <button type="button" onClick={typeof window && handleStop}>Stop</button>
       </main>
 
       <footer>
