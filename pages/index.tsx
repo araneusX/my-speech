@@ -15,11 +15,14 @@ if (typeof window !== 'undefined') {
   window.MediaRecorder = AudioRecorder;
 }
 
+
+
+
 export default function Home() {
   const [audioURL, setAudioURL] = useState('');
 
   const handleRecord = () => {
-    if (typeof window !== undefined) {
+    if (typeof window !== 'undefined') {
       navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
         variables.recorder = new MediaRecorder(stream);
         variables.recorder.addEventListener('dataavailable', (e: BlobEvent) => {
@@ -33,7 +36,7 @@ export default function Home() {
   };
 
   const handleStop = () => {
-    if (typeof window !== undefined) {
+    if (typeof window !== 'undefined') {
       variables.recorder.stop();
       variables.recorder.stream.getTracks().forEach((i: MediaStreamTrack) => i.stop());
     }
