@@ -19,20 +19,24 @@ export default function Home() {
   const [audioURL, setAudioURL] = useState('');
 
   const handleRecord = () => {
-    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-      variables.recorder = new MediaRecorder(stream);
-      variables.recorder.addEventListener('dataavailable', (e: BlobEvent) => {
-        const audio = new Audio(URL.createObjectURL(e.data));
-        audio.play();
-      });
+    if (typeof window !== undefined) {
+      navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+        variables.recorder = new MediaRecorder(stream);
+        variables.recorder.addEventListener('dataavailable', (e: BlobEvent) => {
+          const audio = new Audio(URL.createObjectURL(e.data));
+          audio.play();
+        });
 
-      variables.recorder.start();
-    });
+        variables.recorder.start();
+      });
+    }
   };
 
   const handleStop = () => {
-    variables.recorder.stop();
-    variables.recorder.stream.getTracks().forEach((i: MediaStreamTrack) => i.stop());
+    if (typeof window !== undefined) {
+      variables.recorder.stop();
+      variables.recorder.stream.getTracks().forEach((i: MediaStreamTrack) => i.stop());
+    }
   };
 
   return (
@@ -43,8 +47,8 @@ export default function Home() {
       </Head>
 
       <main>
-        <button type="button" onClick={typeof window && handleRecord}>Record</button>
-        <button type="button" onClick={typeof window && handleStop}>Stop</button>
+        <button type="button" onClick={handleRecord}>Record</button>
+        <button type="button" onClick={handleStop}>Stop</button>
       </main>
 
       <footer>
