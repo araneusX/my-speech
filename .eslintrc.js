@@ -2,7 +2,7 @@ module.exports = {
     "env": {
         "browser": true,
         "node": true,
-        "es2020": true
+        "es2020": true,
     },
     "extends": [
         "eslint:recommended",
@@ -29,5 +29,6 @@ module.exports = {
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
+        "import/prefer-default-export": "off",
     }
 };

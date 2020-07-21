@@ -1,8 +1,39 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable react/jsx-one-expression-per-line */
 import Head from 'next/head';
+// @ts-ignore
+import AudioRecorder from 'audio-recorder-polyfill';
+// @ts-ignore
+import mpegEncoder from 'audio-recorder-polyfill/mpeg-encoder';
+import { useState } from 'react';
+import { variables } from '../constants';
+
+if (typeof window !== 'undefined') {
+  AudioRecorder.encoder = mpegEncoder;
+  AudioRecorder.prototype.mimeType = 'audio/mpeg';
+
+  window.MediaRecorder = AudioRecorder;
+}
 
 export default function Home() {
-  const a = 5;
+  const [audioURL, setAudioURL] = useState('');
+
+  const handleRecord = () => {
+    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+      variables.recorder = new MediaRecorder(stream);
+      variables.recorder.addEventListener('dataavailable', (e: BlobEvent) => {
+        const audio = new Audio(URL.createObjectURL(e.data));
+        audio.play();
+      });
+
+      variables.recorder.start();
+    });
+  };
+
+  const handleStop = () => {
+    variables.recorder.stop();
+    variables.recorder.stream.getTracks().forEach((i: MediaStreamTrack) => i.stop());
+  };
 
   return (
     <div className="container">
@@ -12,7 +43,8 @@ export default function Home() {
       </Head>
 
       <main>
-        Руддщ!
+        <button type="button" onClick={handleRecord}>Record</button>
+        <button type="button" onClick={handleStop}>Stop</button>
       </main>
 
       <footer>
