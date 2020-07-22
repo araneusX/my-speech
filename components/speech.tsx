@@ -22,8 +22,20 @@ const Speech = () => {
       variables.recorder = new MediaRecorder(stream);
       variables.recorder.addEventListener('dataavailable', (e: BlobEvent) => {
         audio.src = URL.createObjectURL(e.data);
+        variables.voice.push(e.data);
         audio.play();
         setMp3(URL.createObjectURL(e.data));
+      });
+
+      variables.recorder.addEventListener('stop', () => {
+        const voiceBlob = new Blob(variables.voice, {
+          type: 'audio/mpeg',
+        });
+
+        const fd = new FormData();
+        fd.append('voice', voiceBlob);
+
+        fetch('http://localhost:3000/api/recognize', { method: 'POST', body: fd });
       });
 
       variables.recorder.start();
@@ -31,8 +43,8 @@ const Speech = () => {
   };
 
   const handleStop = () => {
-    variables.recorder.stop();
-    variables.recorder.stream.getTracks().forEach((i: MediaStreamTrack) => i.stop());
+    variables.recorder?.stop();
+    variables.recorder?.stream.getTracks().forEach((i: MediaStreamTrack) => i.stop());
   };
 
   return (
