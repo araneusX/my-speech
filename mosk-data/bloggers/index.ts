@@ -1,18 +1,12 @@
 import { BloggerDataType } from '../../types/data';
 
-import photo1 from './images/1.png';
-import photo2 from './images/2.png';
-import photo3 from './images/3.png';
-import photo4 from './images/4.png';
-import photo5 from './images/5.png';
-
 type BloggersType = BloggerDataType[];
 
 const bloggers: BloggersType = [
   {
     id: 1,
     name: 'Милана Некрасова',
-    avatar: photo1,
+    avatar: '/bloggers/1.png',
     QRCode: 'https://disney.ams3.cdn.digitaloceanspaces.com/mickey/bloggers/4/QRCode.png',
     createdAt: '2020-07-30T13:15:28.324Z',
     updatedAt: '2020-07-30T13:15:29.506Z',
@@ -143,7 +137,7 @@ const bloggers: BloggersType = [
   {
     id: 2,
     name: 'Александра Star',
-    avatar: photo2,
+    avatar: '/bloggers/2.png',
     QRCode: 'https://disney.ams3.cdn.digitaloceanspaces.com/mickey/bloggers/4/QRCode.png',
     createdAt: '2020-07-30T13:15:28.324Z',
     updatedAt: '2020-07-30T13:15:29.506Z',
@@ -274,7 +268,7 @@ const bloggers: BloggersType = [
   {
     id: 3,
     name: 'Танечка Винникова',
-    avatar: photo3,
+    avatar: '/bloggers/3.png',
     QRCode: 'https://disney.ams3.cdn.digitaloceanspaces.com/mickey/bloggers/4/QRCode.png',
     createdAt: '2020-07-30T13:15:28.324Z',
     updatedAt: '2020-07-30T13:15:29.506Z',
@@ -405,7 +399,7 @@ const bloggers: BloggersType = [
   {
     id: 5,
     name: 'Женя Кошевой',
-    avatar: photo4,
+    avatar: '/bloggers/4.png',
     QRCode: 'https://disney.ams3.cdn.digitaloceanspaces.com/mickey/bloggers/4/QRCode.png',
     createdAt: '2020-07-30T13:15:28.324Z',
     updatedAt: '2020-07-30T13:15:29.506Z',
@@ -536,7 +530,7 @@ const bloggers: BloggersType = [
   {
     id: 6,
     name: 'Инна Приветик',
-    avatar: photo5,
+    avatar: '/bloggers/1.png',
     QRCode: 'https://disney.ams3.cdn.digitaloceanspaces.com/mickey/bloggers/4/QRCode.png',
     createdAt: '2020-07-30T13:15:28.324Z',
     updatedAt: '2020-07-30T13:15:29.506Z',
