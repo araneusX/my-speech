@@ -10,9 +10,7 @@ import initMiddleware from '../../helpers/initMiddlvare';
 const form = new multiparty.Form();
 
 const cors = initMiddleware(
-  Cors({
-    methods: ['GET', 'POST', 'OPTIONS'],
-  }),
+  Cors(),
 );
 
 const promisifyUpload = (
