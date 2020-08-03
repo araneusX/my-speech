@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { bloggers } from 'mosk-data';
+import { bloggers } from '../../mosk-data';
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   let result: any;

@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { users } from 'mosk-data';
+import { users } from '../../mosk-data';
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   const result = {} as any;

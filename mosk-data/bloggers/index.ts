@@ -1,4 +1,4 @@
-import { BloggerDataType } from 'types/data';
+import { BloggerDataType } from '../../types/data';
 
 import photo1 from './images/1.png';
 import photo2 from './images/2.png';

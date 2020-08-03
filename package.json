@@ -19,6 +19,7 @@
     "multiparty": "^4.2.1",
     "next": "9.4.4",
     "next-connect": "^0.8.1",
+    "next-images": "^1.4.1",
     "node-fetch": "^2.6.0",
     "react": "16.13.1",
     "react-dom": "16.13.1"
