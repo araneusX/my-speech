@@ -25,7 +25,9 @@ const speechToText = new SpeechToTextV1({
   url: 'https://api.au-syd.speech-to-text.watson.cloud.ibm.com/instances/e671c138-b5ee-454e-9050-a0b46fb325a2',
 });
 
-const cors = Cors();
+const cors = Cors({
+  methods: ['GET', 'POST', 'OPTIONS'],
+});
 
 function runMiddleware(req:any, res:any, fn:any) {
   return new Promise((resolve, reject) => {
