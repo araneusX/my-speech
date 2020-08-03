@@ -6,7 +6,7 @@ const bloggers: BloggersType = [
   {
     id: 1,
     name: 'Милана Некрасова',
-    avatar: '/bloggers/1.png',
+    avatar: 'https://my-speech.vercel.app/bloggers/1.png',
     QRCode: 'https://disney.ams3.cdn.digitaloceanspaces.com/mickey/bloggers/4/QRCode.png',
     createdAt: '2020-07-30T13:15:28.324Z',
     updatedAt: '2020-07-30T13:15:29.506Z',
@@ -137,7 +137,7 @@ const bloggers: BloggersType = [
   {
     id: 2,
     name: 'Александра Star',
-    avatar: '/bloggers/2.png',
+    avatar: 'https://my-speech.vercel.app/bloggers/2.png',
     QRCode: 'https://disney.ams3.cdn.digitaloceanspaces.com/mickey/bloggers/4/QRCode.png',
     createdAt: '2020-07-30T13:15:28.324Z',
     updatedAt: '2020-07-30T13:15:29.506Z',
@@ -268,7 +268,7 @@ const bloggers: BloggersType = [
   {
     id: 3,
     name: 'Танечка Винникова',
-    avatar: '/bloggers/3.png',
+    avatar: 'https://my-speech.vercel.app/bloggers/3.png',
     QRCode: 'https://disney.ams3.cdn.digitaloceanspaces.com/mickey/bloggers/4/QRCode.png',
     createdAt: '2020-07-30T13:15:28.324Z',
     updatedAt: '2020-07-30T13:15:29.506Z',
@@ -399,7 +399,7 @@ const bloggers: BloggersType = [
   {
     id: 5,
     name: 'Женя Кошевой',
-    avatar: '/bloggers/4.png',
+    avatar: 'https://my-speech.vercel.app/bloggers/4.png',
     QRCode: 'https://disney.ams3.cdn.digitaloceanspaces.com/mickey/bloggers/4/QRCode.png',
     createdAt: '2020-07-30T13:15:28.324Z',
     updatedAt: '2020-07-30T13:15:29.506Z',
@@ -530,7 +530,7 @@ const bloggers: BloggersType = [
   {
     id: 6,
     name: 'Инна Приветик',
-    avatar: '/bloggers/1.png',
+    avatar: 'https://my-speech.vercel.app/bloggers/1.png',
     QRCode: 'https://disney.ams3.cdn.digitaloceanspaces.com/mickey/bloggers/4/QRCode.png',
     createdAt: '2020-07-30T13:15:28.324Z',
     updatedAt: '2020-07-30T13:15:29.506Z',
