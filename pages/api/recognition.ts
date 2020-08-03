@@ -1,11 +1,19 @@
 import { NextApiResponse, NextApiRequest } from 'next';
+import Cors from 'cors';
 
 import SpeechToTextV1 from 'ibm-watson/speech-to-text/v1';
 import { IamAuthenticator } from 'ibm-watson/auth';
 import fs from 'fs';
 import multiparty from 'multiparty';
+import initMiddleware from '../../helpers/initMiddlvare';
 
 const form = new multiparty.Form();
+
+const cors = initMiddleware(
+  Cors({
+    methods: ['GET', 'POST', 'OPTIONS'],
+  }),
+);
 
 const promisifyUpload = (
   req:NextApiRequest,
@@ -25,6 +33,8 @@ const speechToText = new SpeechToTextV1({
 });
 
 export default async (req:NextApiRequest, res:NextApiResponse) => {
+  await cors(req, res);
+
   const { files, fields } = await promisifyUpload(req);
   const audio = fs.createReadStream(files.voice[0].path);
   const keyWords = JSON.parse(fields.keyWords[0]);
