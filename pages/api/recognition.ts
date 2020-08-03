@@ -5,13 +5,8 @@ import SpeechToTextV1 from 'ibm-watson/speech-to-text/v1';
 import { IamAuthenticator } from 'ibm-watson/auth';
 import fs from 'fs';
 import multiparty from 'multiparty';
-import initMiddleware from '../../helpers/initMiddlvare';
 
 const form = new multiparty.Form();
-
-const cors = initMiddleware(
-  Cors(),
-);
 
 const promisifyUpload = (
   req:NextApiRequest,
@@ -30,9 +25,22 @@ const speechToText = new SpeechToTextV1({
   url: 'https://api.au-syd.speech-to-text.watson.cloud.ibm.com/instances/e671c138-b5ee-454e-9050-a0b46fb325a2',
 });
 
-export default async (req:NextApiRequest, res:NextApiResponse) => {
-  await cors(req, res);
+const cors = Cors();
 
+function runMiddleware(req:any, res:any, fn:any) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result:any) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+
+      return resolve(result);
+    });
+  });
+}
+
+export default async (req:NextApiRequest, res:NextApiResponse) => {
+  await runMiddleware(req, res, cors);
   const { files, fields } = await promisifyUpload(req);
   const audio = fs.createReadStream(files.voice[0].path);
   const keyWords = JSON.parse(fields.keyWords[0]);
